@@ -10,7 +10,6 @@ require('./db/config')
 const userController = require('./controllers/userController')
 const categoryController = require('./controllers/categoryController')
 
-
 // Initial Config
 const app = express();
 const port = process.env.PORT || 3000;
