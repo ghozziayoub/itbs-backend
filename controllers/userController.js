@@ -57,4 +57,14 @@ app.post('/login', async (req, res) => {
     }
 })
 
+app.get('/all', async (req, res) => {
+    try {
+        let users = await User.find()
+        res.status(200).send(users)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+
+})
+
 module.exports = app
