@@ -10,7 +10,6 @@ app.get('/', (req, res) => {
     res.status(200).send("Welcome to User Controller")
 })
 
-
 app.post('/register', async (req, res) => {
 
     try {
@@ -36,7 +35,7 @@ app.post('/login', async (req, res) => {
     try {
         let data = req.body
 
-        let user = await User.findOne({ login: data.login })
+        let user = await User.findOne({ email: data.email })
 
         if (!user) {
             res.status(404).send({ message: "NOT FOUND !" })
