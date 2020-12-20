@@ -9,6 +9,7 @@ require('./db/config')
 // Controllers
 const userController = require('./controllers/userController')
 const categoryController = require('./controllers/categoryController')
+const productController = require('./controllers/productController')
 
 // Initial Config
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.json())
 
 app.use('/user', userController)
 app.use('/category', categoryController)
+app.use('/product', productController)
 
 // Initial API
 app.get('/', (req, res) => {
