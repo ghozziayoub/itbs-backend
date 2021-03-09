@@ -5,7 +5,7 @@ const Product = require('./../models/product')
 const app = express()
 
 app.get('/', (req, res) => {
-    res.status(200).send("Welcome to Salarie Controller")
+    res.status(200).send("Welcome to Product Controller")
 })
 
 app.post('/add', async (req, res) => {
