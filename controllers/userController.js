@@ -46,7 +46,7 @@ app.post('/login', async (req, res) => {
             if (!compare) {
                 res.status(404).send({ message: "NOT FOUND !" })
             } else {
-                let token = jwt.sign({ role: 'user', id: user._id }, "SEKRITOU")
+                let token = jwt.sign({ role: user.role, id: user._id }, "SEKRITOU")
 
                 res.status(200).send({ token })
             }
