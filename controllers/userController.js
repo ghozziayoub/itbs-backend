@@ -38,13 +38,13 @@ app.post('/login', async (req, res) => {
         let user = await User.findOne({ email: data.email })
 
         if (!user) {
-            res.status(404).send({ message: "NOT FOUND !" })
+            res.status(404).send({ message: "Email Incorrect !" })
         } else {
 
             let compare = bcrypt.compareSync(data.password, user.password)
 
             if (!compare) {
-                res.status(404).send({ message: "NOT FOUND !" })
+                res.status(404).send({ message: "Password Incorrect !" })
             } else {
                 let token = jwt.sign({ role: user.role, id: user._id }, "SEKRITOU")
 
