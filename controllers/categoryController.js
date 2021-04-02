@@ -2,13 +2,15 @@ const express = require('express')
 
 const Category = require('./../models/category')
 
+const isAdmin = require('./../middleware/auth')
+
 const app = express()
 
 app.get('/', (req, res) => {
     res.status(200).send("Welcome to Salarie Controller")
 })
 
-app.post('/add', async (req, res) => {
+app.post('/add', isAdmin, async (req, res) => {
 
     try {
         let data = req.body
@@ -35,7 +37,7 @@ app.get('/all', async (req, res) => {
     }
 })
 
-app.delete('/delete/:id', async (req, res) => {
+app.delete('/delete/:id', isAdmin, async (req, res) => {
     try {
         let category = await Category.findOneAndDelete({ _id: req.params.id })
 
