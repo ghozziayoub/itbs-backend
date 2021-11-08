@@ -28,6 +28,23 @@ app.post('/add', isAdmin, async (req, res) => {
     }
 })
 
+app.post('/update', isAdmin, async (req, res) => {
+
+    try {
+
+        let category = await Category.findOneAndUpdate({ _id: req.body.id }, { name: req.body.name })
+
+        if (!category) {
+            res.status(404).send({ message: "NOT FOUND !" })
+        } else {
+            res.status(200).send({ message: "category updated" })
+        }
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 app.get('/all', async (req, res) => {
     try {
         let categorys = await Category.find()
@@ -45,6 +62,21 @@ app.delete('/delete/:id', isAdmin, async (req, res) => {
             res.status(404).send({ message: "NOT FOUND !" })
         } else {
             res.status(200).send({ message: "category Deleted" })
+        }
+
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+app.get('/one/:id', isAdmin, async (req, res) => {
+    try {
+        let category = await Category.findOne({ _id: req.params.id })
+
+        if (!category) {
+            res.status(404).send({ message: "NOT FOUND !" })
+        } else {
+            res.status(200).send(category)
         }
 
     } catch (error) {
