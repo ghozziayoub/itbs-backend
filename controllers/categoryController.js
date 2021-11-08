@@ -28,7 +28,7 @@ app.post('/add', isAdmin, async (req, res) => {
     }
 })
 
-app.post('/update', isAdmin, async (req, res) => {
+app.put('/update', isAdmin, async (req, res) => {
 
     try {
 
